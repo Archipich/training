@@ -6,10 +6,10 @@ namespace Homework_image
     {
         static void Main(string[] args)
         {
-            int rowLenght = 3;
-            int numberOfImage = 52;
-            int fullLines = numberOfImage / rowLenght;
-            int remainsImage = numberOfImage - (fullLines * 3);
+            int imagesInRowt = 3;
+            int images = 52;
+            int fullLines = images / imagesInRow;
+            int remainsImage = images - (fullLines * 3);
             Console.WriteLine($"Заполненых рядов {fullLines}, остаток картинок {remainsImage}");
             Console.ReadKey();
         }
