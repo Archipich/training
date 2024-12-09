@@ -9,7 +9,7 @@ namespace Homework_image
             int imagesInRowt = 3;
             int images = 52;
             int fullLines = images / imagesInRow;
-            int remainsImage = images - (fullLines * 3);
+            int remainsImage = images - (fullLines * imagesInRowt);
             Console.WriteLine($"Заполненых рядов {fullLines}, остаток картинок {remainsImage}");
             Console.ReadKey();
         }
