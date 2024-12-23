@@ -1,18 +1,27 @@
 ﻿using System;
 
-namespace Homework_swap
+namespace Homework_store
 {
     class Program
     {
         static void Main(string[] args)
         {
-            string name = "Иванов";
-            string surname = "Петр";
-            Console.WriteLine($"мы нашли ошибку, на данный момент ваше имя {name}, а фамилия {surname}");
-            string swapName = name;
-            name = surname;
-            surname = swapName;
-            Console.WriteLine($"проверьте данные, ваше имя {name}, фамилия {surname}");
+            int gold;
+            int crystal;
+            int crystalPrice = 100;
+            bool isAbleToPay;
+            Console.WriteLine($"Приветствую тебя в магазине кристалов странник, сегодня кристалы по {crystalPrice} золота");
+            Console.Write("Сколько у тебя золота?");
+            gold = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Сколько кристалов тебе нужно?");
+            crystal = Convert.ToInt32(Console.ReadLine());
+
+            isAbleToPay = gold >= crystal * crystalPrice;
+            crystal *= Convert.ToInt32(isAbleToPay);
+            gold -= crystal * crystalPrice;
+            Console.WriteLine($"Вы купили {crystal} кристалов и у вас осталось {gold} золота");
+
+
         }
     }
 }
