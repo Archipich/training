@@ -16,11 +16,8 @@ namespace Homework_store
             Console.Write("Сколько кристалов тебе нужно?");
             crystal = Convert.ToInt32(Console.ReadLine());
 
-           
             gold -= crystal * crystalPrice;
             Console.WriteLine($"Вы купили {crystal} кристалов и у вас осталось {gold} золота");
-
-
         }
     }
 }
