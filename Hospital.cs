@@ -7,21 +7,19 @@ namespace hospital
         static void Main(string[] args)
         {
             int reseptionTime = 10;
-            int minInHouer = 60;
-            int min;
-            int houre;
+            int minutesInHouer = 60;
+            int minutesOfWating;
+            int houresOfWaiting;
+            int queue;
+            int waitingMinutes;
 
             Console.Write("Сколько человек перед вами в очереди: ");
-
-            int queue = Convert.ToInt32(Console.ReadLine());
-            int waitingMinutes = queue * reseptionTime;
-
-            houre = waitingMinutes / minInHouer;
-            min = waitingMinutes % minInHouer;
-
-            Console.WriteLine($"Вам осталось ждать {houre} часов и {min} минут");
-
-
+            queue = Convert.ToInt32(Console.ReadLine());
+            
+            waitingMinutes = queue * reseptionTime;
+            houresOfWaiting = waitingMinutes / minutesInHouer;
+            minutesOfWating = waitingMinutes % minutesInHouer;
+            Console.WriteLine($"Вам осталось ждать {houresOfWaiting} часов и {minutesOfWating} минут");
         }
     }
 }
