@@ -6,14 +6,15 @@ namespace ConsoleApp13
     {
         static void Main(string[] args)
         {
-            int remindersCounters;
+            int repetitions;
+            string sequenceOutput = "Обязательно посмотри сегодня курсы";
 
             Console.Write("Сколько раз вам нужно напомнить посмотреть курсы? ");
-            remindersCounters = Convert.ToInt32(Console.ReadLine());
+            repetitions = Convert.ToInt32(Console.ReadLine());
             
-            for (int i = 0; i < remindersCounters; i++)
+            for (int i = 0; i < repetitions; i++)
             {
-                Console.WriteLine("Обязательно посмотри сегодня курсы");
+                Console.WriteLine(sequenceOutput);
             }
         }
     }
