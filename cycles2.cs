@@ -6,16 +6,18 @@ namespace cycles2
     {
         static void Main(string[] args)
         {
-            string codeWord;
+            string codeWord = "exit";
+            string playerInput;
 
             Console.Write("Вы попали в зазеркалье и стоите перед порталом домой\nСкажите кодовое слово чтобы попасть домой:");
-            codeWord = Console.ReadLine();
+            playerInput = Console.ReadLine();
 
-            while(codeWord != "exit")
+            while(playerInput != codeWord)
             {
                 Console.Write("Чёрт, похоже не сработало, надо попробовать еще раз, как там это слово... , точно это ");
                 codeWord = Console.ReadLine();
             }
+           
             Console.WriteLine("*Вы проснулись*\nФух, это был лишь сон");
         }
     }
