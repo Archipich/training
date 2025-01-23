@@ -15,7 +15,7 @@ namespace cycles2
             while(playerInput != codeWord)
             {
                 Console.Write("Чёрт, похоже не сработало, надо попробовать еще раз, как там это слово... , точно это ");
-                codeWord = Console.ReadLine();
+                playerInput = Console.ReadLine();
             }
            
             Console.WriteLine("*Вы проснулись*\nФух, это был лишь сон");
