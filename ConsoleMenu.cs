@@ -15,17 +15,17 @@ namespace ConsoleMenu
             string exite = "Exit";
             string text1 = "Самое время решить несколько задач, вперед, у тебя получится!";
             string text2 = "Если заблудился в лесу, иди домой.*все это лишь шутка*";
-            string playerInput;
-            int randNumb;
+            string playerInput =  "defult";
+            int randomNumb;
 
-            Console.WriteLine("Приветствую тебя в нашем простеньком меню странник\nПозволь ознакомлю " +
-                "тебя со скудными возможностями:\nText1 - мотивационное сообщение\nText2 - цитата Стэтхэма" +
-                "Random - рандомное число\nClear очистить все(будь осторожен с этим)\nExit - выйти из нашего меню ");
-            Console.Write("Введи любую из этих команд и начнем:");
-            playerInput = Console.ReadLine();
+            Console.WriteLine($"Приветствую тебя в нашем простеньком меню странник\nПозволь ознакомлю " +
+                $"тебя со скудными возможностями:\n{CommandText1} - мотивационное сообщение\n{CommandText2} - цитата Стэтхэма" +
+                $"{CommandRandom} - рандомное число\n{CommandClear} - очистить все(будь осторожен с этим)\n{exite} - выйти из нашего меню ");
+            Console.Write($"Введи любую из этих команд и начнем:");
 
             while (playerInput != exite)
             {
+                playerInput = Console.ReadLine();
 
                 switch (playerInput)
                 {
@@ -39,8 +39,8 @@ namespace ConsoleMenu
                         Console.WriteLine(text2);
                         break;
                     case CommandRandom:
-                        randNumb = rand.Next(0, 100);
-                        Console.WriteLine(randNumb);
+                        randomNumb = rand.Next(0, 100);
+                        Console.WriteLine(randomNumb);
                         break;
                     default:
                         Console.WriteLine("Увы такой команды еще нет");
@@ -48,7 +48,6 @@ namespace ConsoleMenu
                 }
 
                 Console.WriteLine("Что желаете сделать дальше?");
-                playerInput = Console.ReadLine();
             }
 
             Console.WriteLine("Будем рады видеть вас снова!!!");
