@@ -18,7 +18,6 @@ namespace Sum
             {
                 if (i % firstMultipleNumber == 0 || i % secondMultipleNumber == 0)
                 {
-                    Console.WriteLine(i);
                     sum += i;
                 }
             }
