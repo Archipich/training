@@ -1,0 +1,30 @@
+using System;
+
+namespace Sum
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random rand = new Random();
+            int number = rand.Next(0, 101);
+            int firstMultipleNumber = 3;
+            int secondMultipleNumber = 5;
+            int sum = 0;
+
+            Console.WriteLine($"Случайное число: {number}");
+
+            for (int i = 0; i <= number; i++)
+            {
+                if (i % firstMultipleNumber == 0 || i % secondMultipleNumber == 0)
+                {
+                    Console.WriteLine(i);
+                    sum += i;
+                }
+            }
+
+            Console.WriteLine($"Сумма положительных чисел , которые меньше {number}," +
+                $" а так же кратны {firstMultipleNumber} или {secondMultipleNumber} равна {sum}");
+        }
+    }
+}
