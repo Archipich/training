@@ -6,8 +6,10 @@ namespace Sum
     {
         static void Main(string[] args)
         {
-            Random rand = new Random();
-            int number = rand.Next(0, 101);
+            Random random  = new Random();
+            int randomNumberMinmum = 0;
+            int randomNumberMaximum = 100;
+            int number = random.Next(randomNumberMinmum, randomNumberMaximum + 1);
             int firstMultipleNumber = 3;
             int secondMultipleNumber = 5;
             int sum = 0;
@@ -17,7 +19,7 @@ namespace Sum
             for (int i = 0; i <= number; i++)
             {
                 if (i % firstMultipleNumber == 0 || i % secondMultipleNumber == 0)
-                {
+                {;
                     sum += i;
                 }
             }
