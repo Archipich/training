@@ -1,0 +1,28 @@
+using System;
+
+namespace NameOutput
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string nameInput;
+            string symbolInput;
+            string middleLine;
+            string symbolCount = "";
+
+            Console.Write("Кака вас зовут: ");
+            nameInput = Console.ReadLine();
+            Console.Write("Какую рамку желаете: ");
+            symbolInput = Console.ReadLine();
+            middleLine = symbolInput + nameInput + symbolInput;
+
+            for (int i = 0; i < middleLine.Length; i++)
+            {
+                symbolCount += symbolInput;
+            }
+
+            Console.WriteLine($"{symbolCount}\n{middleLine}\n{symbolCount}");
+        }
+    }
+}
