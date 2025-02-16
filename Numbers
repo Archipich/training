@@ -1,0 +1,31 @@
+using System;
+
+namespace number
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int startNumber = 10;
+            int finishNumber = 25;
+            int firstNumberOfRrange = 50;
+            int lastNumberOfRrange = 150;
+            int number;
+            int multipleNumber = 0;
+
+            Random random = new Random();
+            number = random.Next(startNumber, finishNumber+1);
+
+            for (int i = number; i <= lastNumberOfRrange; i += number)
+            {
+                if (i >= firstNumberOfRrange)
+                {
+                    multipleNumber++;
+                }
+            }
+
+            Console.WriteLine($"Количество чисел, которые кратны {number} равно {multipleNumber}");
+            Console.ReadKey();
+        }
+    }
+}
