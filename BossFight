@@ -1,0 +1,140 @@
+using System;
+
+namespace BossFight
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            const string CommandHit = "Hit";
+            const string CommandHealing = "Heal";
+            const string CommandFirboll = "Fireball";
+            const string CommandBigBoom = "Boom";
+
+            Random random = new Random();
+
+            int healCount = 4;
+            int heal = 60;
+            int playerHitPointMin = 25;
+            int playerHitPointMax = 120;
+            int playerHit;
+            int playerHealth = 550;
+            int playerManna = 300;
+            int playerMannaRecovery = 100;
+            int firebollMannaCost = 100;
+            int firbollHitPointMin = 140;
+            int firbollHitPointMax = 180;
+            int firbollHitPoint;
+            bool bigBoomActive = false;
+            int bigBoomHitMin = 250;
+            int bigBoomHitMax = 320;
+            int bigBoomCoust = 200;
+            int bigBoomHit;
+            int bigBoomCount = 2;
+            int bossHealthMin = 850;
+            int bossHealthMax = 1100;
+            int bossHealth;
+            int bossHitMin = 50;
+            int bossHitMax = 100;
+            int bossHit;
+            string playerInput;
+
+            bossHealth = random.Next(bossHealthMin, bossHealthMax);
+
+            Console.WriteLine("*Вы идете по темному переулку, как вдруг слышите подозрительно знаеомый голос за спиной, но не можете разобрать его*" +
+                "\n*нажмите любую кнопку чтобы обернуться*");
+            Console.ReadKey();
+            Console.WriteLine("*Вы попрежнему никого не видите, но голос становиться четче*\n*Нажмите любую кнопку чтобы прислушаться*");
+            Console.ReadKey();
+            Console.WriteLine("Некто - Ну вот мы и встретились мой старый друг и заклятый враг...\nВы - только не ты, я думал ты умер в той облаве" +
+                "\nНекто - о нет я успел сбежать и все ради того чтобы поквитаться с тобой, готовься принять  свою смерть, у тебя нет шансов");
+            Console.WriteLine($"*Увидев его ты понимаешь что он изменился, но и ты на месте не сидел, быстро осмотрев " +
+                $"его ты понимаешь что у него {bossHealth} xp*\nТеперь давай вспомним что умеешь ты:\n" +
+                $"1){CommandHit} - обычный удар с уроном от {playerHitPointMin} до {playerHitPointMax}\n" +
+                $"2) {CommandFirboll} - ОГО , да ты маг и можешь запускать огненные шары с уроном от {firbollHitPointMin} до {firbollHitPointMax}" +
+                $"но так же это тратит твою манну на {firebollMannaCost}\n" +
+                $"3) {CommandHealing} - Восстановление {heal} XP и манны {playerMannaRecovery}, можно использовать" +
+                $" {healCount} раз, но учтите что это восстанавливает не больше их максимальных значений\n" +
+                $"4) {CommandBigBoom} - самое мощное что у тебя есть, тратит {bigBoomCoust} манны, наносит урона от {bigBoomHitMin} до {bigBoomHitMax}," +
+                $"можно использовать только после {CommandFirboll} и только {bigBoomCount} раз");
+           
+            while (playerHealth > 0 && bossHealth > 0)
+            {
+                Console.Write($"У тебя {playerHealth} xp , {playerManna} манны, {healCount} хила, {bigBoomCount} взрыва , а у некто {bossHealth} xp, что ты будешь делать:");
+                playerInput = Console.ReadLine();
+
+                switch (playerInput)
+                {
+                    case CommandHit:
+                        playerHit = random.Next(playerHitPointMin, playerHitPointMax);
+                        bossHealth -= playerHit;
+                        Console.WriteLine($"Вы нанесли некто {playerHit} урона");
+                        break;
+                    case CommandFirboll:
+                        if(playerManna >= firebollMannaCost)
+                        {
+                            playerManna -= firebollMannaCost;
+                            firbollHitPoint = random.Next(firbollHitPointMin, firbollHitPointMax);
+                            bossHealth -= firbollHitPoint;
+                            Console.WriteLine($"Ха, лови этот огненный шар *Вы нанесли некто {firbollHitPoint} урона*");
+                            bigBoomActive = true;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Чееерт у меня не хватило манны, я не успею сменитт тактику");
+                        }
+                        break;
+                    case CommandHealing:
+                        if (healCount >0 && playerHealth >= playerHealth - heal && playerManna >= playerManna - playerMannaRecovery)
+                        {
+                            Console.WriteLine("Хух, надо бы похилится и восстановит манну");
+                            playerHealth += heal;
+                            playerManna += playerMannaRecovery;
+                            healCount--;
+                            Console.WriteLine($"Так то лучше, теперь у меня {playerHealth} xp , {playerManna} манны");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Сейчас не вариант хилится");
+                        }
+                        break;
+                    case CommandBigBoom:
+                        if (bigBoomActive == true && bigBoomCount >= 0 && playerManna >= bigBoomCoust)
+                        {
+                            bigBoomHit = random.Next(bigBoomHitMin, bigBoomHitMax);
+                            bossHealth -= bigBoomHit;
+                            bigBoomActive = false;
+                            playerManna -= bigBoomCoust;
+                            Console.WriteLine($"Понеслась *взрыв нанес боссу {bigBoomHit}*");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Я к этому еще не готов");
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Что то пошло не так");
+                        break;
+                }
+
+                bossHit = random.Next(bossHitMin, bossHitMax);
+                playerHealth -= bossHit;
+                Console.WriteLine($"Некто - Теперь моя очередь отвечать любезностями *некто наносит {bossHit} урона*");
+            }
+            if (playerHealth <= 0)
+            {
+                Console.WriteLine("*вы лежите в луже крови, некто удаляясь в темноту бросает* - Надо было так же сделать на том пароме");
+            }
+            if (bossHealth <= 0)
+            {
+                Console.WriteLine("*некто лежит в луже крови, вы удаляясь в темноту бросаете* - Зря ты восскрес");
+            }
+            if (playerHealth <= 0  && bossHealth <= 0)
+            {
+                Console.WriteLine("*До восхода солнца вы оба лежали в лужах крови и не дышали*");
+            }
+
+            Console.WriteLine("Спасибо за игру!");
+        }
+    }
+}
