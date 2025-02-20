@@ -76,6 +76,7 @@ namespace BossFight
                         break;
 
                     case CommandFirboll:
+
                         if(playerManna >= firebollMannaCost)
                         {
                             playerManna -= firebollMannaCost;
@@ -91,6 +92,7 @@ namespace BossFight
                         break;
 
                     case CommandHealing:
+
                         if (healCount >0 )
                         {
                             Console.WriteLine("Хух, надо бы похилится и восстановит манну");
@@ -116,6 +118,7 @@ namespace BossFight
                         break;
 
                     case CommandBigBoom:
+
                         if (isBigBoomActive == true && bigBoomCount >= 0 && playerManna >= bigBoomCoust)
                         {
                             bigBoomHit = random.Next(bigBoomHitMin, bigBoomHitMax);
