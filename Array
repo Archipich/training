@@ -7,30 +7,37 @@ namespace Array
         static void Main(string[] args)
         {
             int[,] array = new int[4, 4];
-            int amount = 0;
+            int sum = 0;
             int multiplication = 1;
+            int randomMinimum = 0;
+            int randomMaximum = 100;
+            int lineNumber = 1;
+            int columnNumber = 0;
             Random random = new Random();
 
             for (int i = 0; i < array.GetLength(0); i++)
             {
+
                 for (int j = 0; j < array.GetLength(1); j++)
                 {
-                    array[i, j] = random.Next(0, 100);
+                    array[i, j] = random.Next(randomMinimum, randomMaximum + 1);
                     Console.Write(array[i, j] + " ");
                 }
 
                 Console.WriteLine();
             }
+
             for (int i = 0; i < array.GetLength(1); i++)
             {
-                amount += array[1, i];
-            }
-            for (int i = 0; i < array.GetLength(0); i++)
-            {
-                multiplication *= array[i, 0];
+                sum += array[lineNumber, i];
             }
 
-            Console.WriteLine($"Сумма второй строки {amount}");
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                multiplication *= array[i, columnNumber];
+            }
+
+            Console.WriteLine($"Сумма второй строки {sum}");
             Console.WriteLine($"Произведение первого столбца {multiplication}");
         }
     }
