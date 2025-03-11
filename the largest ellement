@@ -1,0 +1,53 @@
+using System;
+
+namespace the_largest_element
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int arrayLines = 10;
+            int arrayColumn = 10;
+            int randomMaximum = 99;
+            int randomMinimum = 0;
+            int maxElement = int.MinValue;
+            int[,] A = new int[arrayLines, arrayColumn];
+
+            Random random = new Random();
+
+            for (int i = 0; i < A.GetLength(0); i++)
+            {
+
+                for (int j = 0; j < A.GetLength(1); j++)
+                {
+                    A[i, j] = random.Next(randomMinimum, randomMaximum + 1);
+                    Console.Write(A[i, j] + " ");
+
+                    if (maxElement < A[i, j])
+                    {
+                        maxElement = A[i, j];
+                    }
+                }
+
+                Console.WriteLine();
+            }
+
+            Console.WriteLine($"\nМаксимальный эллемент {maxElement}\n ");
+
+            for (int i = 0; i < A.GetLength(0); i++)
+            {
+
+                for (int j = 0; j < A.GetLength(1); j++)
+                {
+                    if (A[i, j] == maxElement)
+                    {
+                        A[i, j] = 0;
+                    }
+                    Console.Write(A[i, j] + " ");
+                }
+
+                Console.WriteLine();
+            }
+        }
+    }
+}
