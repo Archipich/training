@@ -7,43 +7,42 @@ namespace the_largest_element
         static void Main(string[] args)
         {
             int arrayLines = 10;
-            int arrayColumn = 10;
+            int arrayColumns = 10;
             int randomMaximum = 99;
             int randomMinimum = 0;
             int maxElement = int.MinValue;
-            int[,] A = new int[arrayLines, arrayColumn];
+            int[,] array = new int[arrayLines, arrayColumns];
 
             Random random = new Random();
 
-            for (int i = 0; i < A.GetLength(0); i++)
+            for (int i = 0; i < array.GetLength(0); i++)
             {
 
-                for (int j = 0; j < A.GetLength(1); j++)
+                for (int j = 0; j < array.GetLength(1); j++)
                 {
-                    A[i, j] = random.Next(randomMinimum, randomMaximum + 1);
-                    Console.Write(A[i, j] + " ");
+                    array[i, j] = random.Next(randomMinimum, randomMaximum + 1);
+                    Console.Write(array[i, j] + " ");
 
-                    if (maxElement < A[i, j])
+                    if (maxElement < array[i, j])
                     {
-                        maxElement = A[i, j];
+                        maxElement = array[i, j];
                     }
                 }
-
                 Console.WriteLine();
             }
 
             Console.WriteLine($"\nМаксимальный эллемент {maxElement}\n ");
 
-            for (int i = 0; i < A.GetLength(0); i++)
+            for (int i = 0; i < array.GetLength(0); i++)
             {
 
-                for (int j = 0; j < A.GetLength(1); j++)
+                for (int j = 0; j < array.GetLength(1); j++)
                 {
-                    if (A[i, j] == maxElement)
+                    if (array[i, j] == maxElement)
                     {
-                        A[i, j] = 0;
+                        array[i, j] = 0;
                     }
-                    Console.Write(A[i, j] + " ");
+                    Console.Write(array[i, j] + " ");
                 }
 
                 Console.WriteLine();
