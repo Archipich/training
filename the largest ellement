@@ -11,38 +11,38 @@ namespace the_largest_element
             int randomMaximum = 99;
             int randomMinimum = 0;
             int maxElement = int.MinValue;
-            int[,] array = new int[arrayLines, arrayColumns];
+            int newElement = 0;
+            int[,] arrayA = new int[arrayLines, arrayColumns];
 
             Random random = new Random();
 
-            for (int i = 0; i < array.GetLength(0); i++)
+            for (int i = 0; i < arrayA.GetLength(0); i++)
             {
 
-                for (int j = 0; j < array.GetLength(1); j++)
+                for (int j = 0; j < arrayA.GetLength(1); j++)
                 {
-                    array[i, j] = random.Next(randomMinimum, randomMaximum + 1);
-                    Console.Write(array[i, j] + " ");
+                    arrayA[i, j] = random.Next(randomMinimum, randomMaximum + 1);
+                    Console.Write(arrayA[i, j] + " ");
 
-                    if (maxElement < array[i, j])
+                    if (maxElement < arrayA[i, j])
                     {
-                        maxElement = array[i, j];
+                        maxElement = arrayA[i, j];
                     }
                 }
                 Console.WriteLine();
             }
-
             Console.WriteLine($"\nМаксимальный эллемент {maxElement}\n ");
 
-            for (int i = 0; i < array.GetLength(0); i++)
+            for (int i = 0; i < arrayA.GetLength(0); i++)
             {
 
-                for (int j = 0; j < array.GetLength(1); j++)
+                for (int j = 0; j < arrayA.GetLength(1); j++)
                 {
-                    if (array[i, j] == maxElement)
+                    if (arrayA[i, j] == maxElement)
                     {
-                        array[i, j] = 0;
+                        arrayA[i, j] = newElement;
                     }
-                    Console.Write(array[i, j] + " ");
+                    Console.Write(arrayA[i, j] + " ");
                 }
 
                 Console.WriteLine();
