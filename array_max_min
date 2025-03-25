@@ -20,14 +20,24 @@ namespace array_max_min
                 array[i] = random.Next(arrayMaxLenght, arrayMinLenght + 1);
                 Console.Write(array[i] + " ");
             }
-
+            
+            if (array[1] < array[0])
+            {
+                Console.WriteLine("\n" + array[0]);
+            }
+            
             for (int y = 1; y < array.Length - arrayStep; y += arrayStep)
             {
                 if (array[y] > array[y - arrayStep] && array[y] > array[y + arrayStep])
                 {
                     Console.WriteLine(array[y] + " ");
                 }
-           }
+            }
+            
+            if (array[CommandarrayLenght - 2] < array[CommandarrayLenght - arrayStep])
+            {
+                Console.WriteLine(array[CommandarrayLenght - arrayStep]);
+            }
         }
     }
 }
