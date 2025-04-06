@@ -1,0 +1,64 @@
+using System;
+
+namespace ArrayUP
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            const string CommandSum = "Sum";
+            const string CommandExite = "Exite";
+
+            bool exiteChtck = false;
+            int arraySum = 0;
+            int userNumber;
+
+            int[] array = new int[1];
+
+            while(exiteChtck == false)
+            {
+                Console.WriteLine("Текущий массив:");
+
+                for (int i = 0; i < array.Length; i++)
+                {
+                    Console.Write(array[i]+" ");
+                }
+                
+                Console.WriteLine("\nВведите одну из команд:\n1)Любое число (оно добавиться в масси)\n" +
+                "2)Sum - сумма всех чисел массива\n3)Exite - выход из программы");
+                string userInput = Console.ReadLine();
+               
+                switch (userInput)
+                {
+                    case CommandSum:
+
+                        for(int i = 0; i< array.Length - 1 ; i++)
+                        {
+                            arraySum = array[i] + array[i + 1];
+                        }
+
+                        Console.WriteLine($"Сумма чисел массива {arraySum}");
+                        Console.ReadKey();
+                        break;
+                    case CommandExite:
+                        exiteChtck = true;
+                        break;
+                    default:
+                        userNumber = Convert.ToInt32(userInput);
+                        int[] tempArray = new int[array.Length + 1];
+                        
+                        for(int i = 0; i < array.Length; i++)
+                        {
+                            tempArray[i] = array[i];
+                        }
+
+                        tempArray[tempArray.Length - 1] = userNumber;
+                        array = tempArray;
+                        break;
+                }
+                Console.Clear();
+                
+            }
+        }
+    }
+}
