@@ -10,7 +10,6 @@ namespace ArraRepetition
             int maxArray = 9;
             int repetition = 1 ;
             int repetitionMaximum = 1;
-            int numberRepetition = -1;
             int numberRepetitionFinal = 0;
 
             int[] array = new int[30];
@@ -29,13 +28,13 @@ namespace ArraRepetition
                 if (array[i] == array[i + 1])
                 {
                     repetition++;
-                    if(array[i] != numberRepetition && repetition > repetitionMaximum)
+                    if(repetition >= repetitionMaximum)
                     {
-                        numberRepetition = array[i];
+                        numberRepetitionFinal = array[i];
                         repetitionMaximum = repetition;
-                        numberRepetitionFinal = numberRepetition;
+                        
                     }
-                    else if (array[i] == numberRepetition && repetition == repetitionMaximum)
+                    else if ( repetition == repetitionMaximum)
                     {
                         repetition++;
                         repetitionMaximum = repetition;
@@ -45,7 +44,7 @@ namespace ArraRepetition
                 }
                 else if (array[i] != array[i + 1])
                 {
-                    numberRepetition = -1;
+                    
                     repetition = 1;
                 }
             }
