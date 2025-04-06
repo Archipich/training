@@ -34,13 +34,6 @@ namespace ArraRepetition
                         repetitionMaximum = repetition;
                         
                     }
-                    else if ( repetition == repetitionMaximum)
-                    {
-                        repetition++;
-                        repetitionMaximum = repetition;
-                        
-                    }
-                    
                 }
                 else if (array[i] != array[i + 1])
                 {
