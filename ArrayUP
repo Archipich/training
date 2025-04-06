@@ -32,9 +32,9 @@ namespace ArrayUP
                 {
                     case CommandSum:
                         
-                        for(int i = 0; i< array.Length - 1 ; i++)
+                        for(int i = 0; i< array.Length; i++)
                         {
-                            arraySum = array[i] + array[i + 1];
+                            arraySum += array[i];
                         
                         }
                         Console.WriteLine($"Сумма чисел массива {arraySum}");
