@@ -1,0 +1,57 @@
+using System;
+
+namespace ArraRepetition
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int minArray = 0;
+            int maxArray = 9;
+            int repetition = 1 ;
+            int repetitionMaximum = 1;
+            int numberRepetition = -1;
+            int numberRepetitionFinal = 0;
+
+            int[] array = new int[30];
+
+            Random random = new Random();
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = random.Next(minArray, maxArray + 1);
+                Console.Write(array[i] + " ");
+            }
+
+            for (int i = 0; i < array.Length-1; i++)
+            {
+
+                if (array[i] == array[i + 1])
+                {
+                    repetition++;
+                    if(array[i] != numberRepetition && repetition > repetitionMaximum)
+                    {
+                        numberRepetition = array[i];
+                        repetitionMaximum = repetition;
+                        numberRepetitionFinal = numberRepetition;
+                    }
+                    else if (array[i] == numberRepetition && repetition == repetitionMaximum)
+                    {
+                        repetition++;
+                        repetitionMaximum = repetition;
+                        
+                    }
+                    
+                }
+                else if (array[i] != array[i + 1])
+                {
+                    numberRepetition = -1;
+                    repetition = 1;
+                }
+            }
+           
+            Console.WriteLine( $"\nЧисло {numberRepetitionFinal} повторяется в массиве {repetitionMaximum} раз(а)");
+            
+        }
+    }
+}
