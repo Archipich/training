@@ -1,0 +1,20 @@
+using System;
+
+namespace arraySplit
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введите строку, чтобы разбить ее на слова:");
+            string userInput = Console.ReadLine();
+
+            string[] subs = userInput.Split(' ');
+
+            foreach (var sub in subs)
+            {
+                Console.WriteLine(sub);
+            }
+        }
+    }
+}
