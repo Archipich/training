@@ -1,0 +1,71 @@
+using System;
+
+namespace array___
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            const string CommandExite = "Exie"; 
+            char firstSimvol = '(';
+            char lastSimvol = ')';
+            string userInput = "";
+            int symbolCount = 0;
+            int symbolDepth = 0;
+            bool isWorking = true;
+
+            while (isWorking == true)
+            {
+
+                Console.WriteLine($"Введите свое послание скобочным языком, используя только символы {firstSimvol} и {lastSimvol}" +
+                    $".Как закончите с отправкой сообщений введите {CommandExite} для выхода");
+                userInput = Console.ReadLine();
+
+                switch (userInput)
+                {
+                    case CommandExite:
+                        break;
+                    default:
+                       for (int i = 0; i < userInput.Length; i++)
+                       {
+                           if (userInput[i] == firstSimvol)
+                           {
+                                symbolCount++;
+
+                                   if (symbolCount > symbolDepth)
+                                   {
+                                        symbolDepth = symbolCount;
+                                   }
+                           }
+                           else if (userInput[i] == lastSimvol)
+                           {
+                                symbolCount--;
+
+                                   if (symbolCount < 0)
+                                   {
+                                       break;
+                                   }
+                           }
+                       }
+
+                           if (symbolCount != 0)
+                           {
+                                Console.WriteLine("Нарушены правила отправки сообщения");
+                                Console.ReadLine(); 
+                           }
+                           else if (symbolCount == 0)
+                           {
+                                Console.WriteLine($"Ваше послание {userInput} корректно, глубина погружения {symbolDepth} ");
+                                Console.ReadLine();
+                           }
+                        break;
+                }
+               
+                symbolCount = 0;
+                symbolDepth = 0;
+                Console.Clear();
+            
+            }
+        }
+    }
+}
