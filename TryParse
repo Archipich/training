@@ -1,0 +1,55 @@
+using System;
+
+namespace TryParse
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string userInput;
+            int userNumber;
+            bool isWorking = true;
+            bool isBeingСonversionNumderCorrect;
+
+            while (isWorking == true)
+            {
+                Console.Write("Пожалуйста, введите число, мы проверим его корректность:");
+                userInput = Console.ReadLine();
+
+                isBeingСonversionNumderCorrect = IsBeingСonversionNumder(userInput);
+
+                if (isBeingСonversionNumderCorrect == true)
+                {
+                    userNumber =Convert.ToInt32(userInput);
+                    Console.WriteLine($"Да, все верно, ваш  ввод действительно является числом {userNumber}");
+                    isWorking = false;
+                }
+                else
+                {
+                    Console.WriteLine("Неверный ввод, Нажмите кнопку чтобы попробовать еще раз");
+                }
+                Console.ReadKey();
+                Console.Clear();
+            }
+
+        }
+
+        static bool IsBeingСonversionNumder(string userInput)
+        {
+            bool isCorrecting;
+            int number;
+
+            bool success = int.TryParse(userInput, out number);
+            if (success == true)
+            {
+                isCorrecting = true;
+            }
+            else
+            {
+                isCorrecting = false;
+            }
+
+            return isCorrecting;
+        }
+    }
+}
