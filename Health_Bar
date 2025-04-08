@@ -1,0 +1,41 @@
+using System;
+
+namespace Health_Bar
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int health = 3;
+            int maximumHealth = 10;
+            DrawBar(health, maximumHealth, ConsoleColor.Red);
+        }
+
+        static void DrawBar(int value, int maximumValue,ConsoleColor color, char symbol= '#')
+        {
+            ConsoleColor defultColor = Console.BackgroundColor;
+
+            string bar = "";
+
+            for (int i = 0; i < value; i++)
+            {
+                bar += symbol;
+            }
+
+            Console.SetCursorPosition(0, 0);
+            Console.Write('[');
+            Console.BackgroundColor = color;
+            Console.Write(bar);
+            Console.BackgroundColor = defultColor;
+
+            bar = " ";
+            
+            for (int i = value; i < maximumValue; i++)
+            {
+                bar += " ";
+            }
+
+            Console.Write(bar + ']');
+        }
+    }
+}
