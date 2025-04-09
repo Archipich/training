@@ -1,0 +1,79 @@
+using System;
+
+namespace Shuffle
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] arrayShuffle = new int[6];
+
+            RandomazingArray(arrayShuffle);
+
+            UserPlaing(arrayShuffle);
+
+            Console.WriteLine("До новых встреч");
+        }
+
+        static void RandomazingArray(int[] array)
+        {
+            int arrayMaximum = 20;
+            int arrayMinimum = 0;
+
+            Random randomArray = new Random();
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = randomArray.Next(arrayMinimum, arrayMaximum + 1);
+            }
+
+        }
+
+        static void Shafle(int[] array)
+        {
+            Random randomShafle = new Random();
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                int numberEllement = randomShafle.Next(array.Length);
+                int tempNumber = array[i];
+                array[i] = array[numberEllement];
+                array[numberEllement] = tempNumber;
+            }
+        }
+
+        static void ShowArray(int[] array)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                Console.Write(array[i] + " ");
+            }
+        }
+
+        static void UserPlaing(int[] array)
+        {
+            bool isWorking = true;
+            string userInput;
+            string exite = "exite";
+            
+            while (isWorking == true)
+            {
+                ShowArray(array);
+                Console.WriteLine($"\nНажмите Enter  чтобы перемешать массив и введите {exite} чтобы выйти");
+                userInput = Console.ReadLine();
+                if (userInput == exite)
+                {
+                    isWorking = false;
+                }
+                else
+                {
+                    Shafle(array);
+                    ShowArray(array);
+                }
+
+                Console.ReadLine();
+                Console.Clear();
+            }
+        }
+    }
+}
