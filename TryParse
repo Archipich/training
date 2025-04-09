@@ -14,25 +14,21 @@ namespace TryParse
         static void ReadInt(ref int number)
         {
             string userInput;
-            int userNumber = 0;
-            bool isCorrecting = false;
+            bool success = false;
 
-            while (isCorrecting == false)
+            while (success == false)
             {
                 Console.Write("Пожалуйста, введите число, мы проверим его корректность:");
                 userInput = Console.ReadLine();
 
-                bool success = int.TryParse(userInput, out number);
+                success = int.TryParse(userInput, out number);
                 
                 if (success == true)
                 {
-                    isCorrecting = true;
-                    userNumber = Convert.ToInt32(userInput);
-                    Console.WriteLine($"Да, все верно, ваш  ввод действительно является числом {userNumber}");
+                    Console.WriteLine($"Да, все верно, ваш  ввод действительно является числом {number}");
                 }
                 else
                 {
-                    isCorrecting = false;
                     Console.WriteLine("Неверный ввод, Нажмите кнопку чтобы попробовать еще раз");
                 }
                 
