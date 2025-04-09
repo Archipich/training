@@ -12,37 +12,46 @@ namespace Health_Bar
             int maximumManna = 10;
             int healthPosition = 0;
             int mannaPosition = 1;
-            
+
             DrawBar(health, maximumHealth, ConsoleColor.Red, healthPosition);
-            
+
             DrawBar(manna, maximumManna, ConsoleColor.Green, mannaPosition);
         }
 
-        static void DrawBar(int value, int maximumValue,ConsoleColor color, int position, char symbol= '#')
+        static void DrawBar(int value, int maximumValue, ConsoleColor color, int position, char symbol = '#')
         {
-            ConsoleColor defultColor = Console.BackgroundColor;
-
-            string bar = "";
-
-            for (int i = 0; i < value; i++)
+            if (value <= maximumValue)
             {
-                bar += symbol;
+
+                ConsoleColor defultColor = Console.BackgroundColor;
+
+                string bar = "";
+                char startSimbol = '[';
+                char endSimbol = ']';
+                for (int i = 0; i < value; i++)
+                {
+                    bar += symbol;
+                }
+
+                Console.SetCursorPosition(0, position);
+                Console.Write('[');
+                Console.BackgroundColor = color;
+                Console.Write(bar);
+                Console.BackgroundColor = defultColor;
+
+                bar = " ";
+
+                for (int i = value; i < maximumValue; i++)
+                {
+                    bar += endSimbol;
+                }
+
+                Console.Write(bar + startSimbol);
             }
-
-            Console.SetCursorPosition(0, position);
-            Console.Write('[');
-            Console.BackgroundColor = color;
-            Console.Write(bar);
-            Console.BackgroundColor = defultColor;
-
-            bar = " ";
-            
-            for (int i = value; i < maximumValue; i++)
+            else
             {
-                bar += " ";
+                Console.WriteLine("Неверное значение параметров");
             }
-
-            Console.Write(bar + ']');
         }
     }
 }
