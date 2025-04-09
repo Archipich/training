@@ -7,11 +7,11 @@ namespace TryParse
         static void Main(string[] args)
         {
             int userNumber = 0;
-            ReadInt(ref userNumber);
+            ReadInt(userNumber);
             Console.WriteLine($"Число пользователя {userNumber}");
         }
 
-        static void ReadInt(ref int number)
+        static int ReadInt(int number)
         {
             string userInput;
             bool success = false;
@@ -35,6 +35,7 @@ namespace TryParse
                 Console.ReadKey();
                 Console.Clear();
             }
+            return number;
         }
 
     }
