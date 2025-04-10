@@ -6,52 +6,71 @@ namespace Health_Bar
     {
         static void Main(string[] args)
         {
-            int health = 3;
+            int healthPercent = 100;
             int maximumHealth = 10;
-            int manna = 7;
+            int mannaPercent = 70;
             int maximumManna = 10;
             int healthPosition = 0;
             int mannaPosition = 1;
+            float healt;
+            float manna;
 
-            DrawBar(health, maximumHealth, ConsoleColor.Red, healthPosition);
+            healt = Percent(healthPercent);
+            manna = Percent(mannaPercent);
 
+            DrawBar(healt, maximumHealth, ConsoleColor.Red, healthPosition);
+            
             DrawBar(manna, maximumManna, ConsoleColor.Green, mannaPosition);
         }
 
-        static void DrawBar(int value, int maximumValue, ConsoleColor color, int position, char symbol = '#')
+        static void DrawBar(float value, float maximumValue,ConsoleColor color, int position, char symbol= '#')
         {
-            if (value <= maximumValue)
+            if (maximumValue >= value)
             {
 
                 ConsoleColor defultColor = Console.BackgroundColor;
 
                 string bar = "";
-                char startSimbol = '[';
-                char endSimbol = ']';
-                for (int i = 0; i < value; i++)
-                {
-                    bar += symbol;
-                }
+                char startBar = '[';
+                char endBar = ']';
+                char symbol1 = ' ';
+
+                CompletionBar(value, ref bar, symbol);
 
                 Console.SetCursorPosition(0, position);
-                Console.Write('[');
+                Console.Write(startBar);
                 Console.BackgroundColor = color;
                 Console.Write(bar);
                 Console.BackgroundColor = defultColor;
 
-                bar = " ";
+                bar = "";
 
-                for (int i = value; i < maximumValue; i++)
-                {
-                    bar += endSimbol;
-                }
+                CompletionBar(maximumValue, ref bar, symbol1, value);
 
-                Console.Write(bar + startSimbol);
+                Console.Write(bar + endBar);
             }
             else
             {
-                Console.WriteLine("Неверное значение параметров");
+                Console.WriteLine("Вы ввели неверные значения");
             }
+        }
+
+        static void CompletionBar(float value, ref string bar, char symbol, float value2 = 0)
+        {
+            for (float i = value2; i < value; i++)
+            {
+                bar += symbol;
+            }
+        }
+
+        static float Percent(float number)
+        {
+            float namberInt;
+            namberInt = number / 10;
+            return namberInt;
         }
     }
 }
+//Прошу искренне меня простить за сообщение на платформе, на тот момент замылился глаз и кипел мозг, только спустя три
+//часа в голову пришло решение:(
+// Еще раз искренне прошу меня простить 
