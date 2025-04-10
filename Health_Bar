@@ -6,21 +6,23 @@ namespace Health_Bar
     {
         static void Main(string[] args)
         {
-            int healthPercent = 100;
-            int maximumHealth = 10;
+            int healthPercent = 70;
+            int maximumHealth = 40;
             int mannaPercent = 70;
             int maximumManna = 10;
             int healthPosition = 0;
             int mannaPosition = 1;
             float healt;
             float manna;
+            ConsoleColor healtBar = ConsoleColor.Red;
+            ConsoleColor mannaBar = ConsoleColor.Green;
 
-            healt = Percent(healthPercent);
-            manna = Percent(mannaPercent);
+            healt = InterestConversion(healthPercent, maximumHealth);
+            manna = InterestConversion(mannaPercent, maximumManna);
 
-            DrawBar(healt, maximumHealth, ConsoleColor.Red, healthPosition);
+            DrawBar(healt, maximumHealth, healtBar, healthPosition);
             
-            DrawBar(manna, maximumManna, ConsoleColor.Green, mannaPosition);
+            DrawBar(manna, maximumManna, mannaBar, mannaPosition);
         }
 
         static void DrawBar(float value, float maximumValue,ConsoleColor color, int position, char symbol= '#')
@@ -35,7 +37,7 @@ namespace Health_Bar
                 char endBar = ']';
                 char symbol1 = ' ';
 
-                CompletionBar(value, ref bar, symbol);
+                bar = CompletionBar(value, symbol);
 
                 Console.SetCursorPosition(0, position);
                 Console.Write(startBar);
@@ -45,7 +47,7 @@ namespace Health_Bar
 
                 bar = "";
 
-                CompletionBar(maximumValue, ref bar, symbol1, value);
+                bar = CompletionBar(maximumValue, symbol1, value);
 
                 Console.Write(bar + endBar);
             }
@@ -55,22 +57,23 @@ namespace Health_Bar
             }
         }
 
-        static void CompletionBar(float value, ref string bar, char symbol, float value2 = 0)
+        static string CompletionBar(float value, char symbol, float value2 = 0)
         {
+            string bar = "";
+
             for (float i = value2; i < value; i++)
             {
                 bar += symbol;
             }
+            return bar;
         }
 
-        static float Percent(float number)
+        static float InterestConversion(float numberPrecent, int number)
         {
             float namberInt;
-            namberInt = number / 10;
+            namberInt = (numberPrecent / 100) * number;
             return namberInt;
         }
     }
 }
-//Прошу искренне меня простить за сообщение на платформе, на тот момент замылился глаз и кипел мозг, только спустя три
-//часа в голову пришло решение:(
-// Еще раз искренне прошу меня простить 
+
