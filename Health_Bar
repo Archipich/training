@@ -45,8 +45,6 @@ namespace Health_Bar
                 Console.Write(bar);
                 Console.BackgroundColor = defultColor;
 
-                bar = "";
-
                 bar = CompletionBar(maximumValue, symbol1, value);
 
                 Console.Write(bar + endBar);
@@ -57,11 +55,11 @@ namespace Health_Bar
             }
         }
 
-        static string CompletionBar(float value, char symbol, float value2 = 0)
+        static string CompletionBar(float remainsToFillIn, char symbol, float filledIn = 0)
         {
             string bar = "";
 
-            for (float i = value2; i < value; i++)
+            for (float i = filledIn; i < remainsToFillIn; i++)
             {
                 bar += symbol;
             }
@@ -70,10 +68,10 @@ namespace Health_Bar
 
         static float InterestConversion(float numberPrecent, int number)
         {
-            float namberInt;
-            namberInt = (numberPrecent / 100) * number;
-            return namberInt;
+            float convertedNumber;
+            int maxumumPercent = 100;
+            convertedNumber = (numberPrecent / maxumumPercent) * number;
+            return convertedNumber;
         }
     }
 }
-
