@@ -8,26 +8,26 @@ namespace Shuffle
         {
             bool isWorking = true;
             string userInput;
-            string exit = "exit";
+            string theFuckingOutputVariable = "exit";
 
-            int[] arrayShuffle = new int[6];
+            int[] theFuckingNumbers = new int[6];
 
-            RandomizeArray(arrayShuffle);
+            RandomizeArray(theFuckingNumbers);
 
             while (isWorking == true)
             {
-                ShowArray(arrayShuffle);
-                Console.WriteLine($"\nНажмите Enter  чтобы перемешать массив и введите {exit} чтобы выйти");
+                ShowArray(theFuckingNumbers);
+                Console.WriteLine($"\nНажмите Enter  чтобы перемешать массив и введите {theFuckingOutputVariable} чтобы выйти");
                 userInput = Console.ReadLine();
                 
-                if (userInput == exit)
+                if (userInput == theFuckingOutputVariable)
                 {
                     isWorking = false;
                 }
                 else
                 {
-                    Shuffle(arrayShuffle);
-                    ShowArray(arrayShuffle);
+                    Shuffle(theFuckingNumbers);
+                    ShowArray(theFuckingNumbers);
                 }
 
                 Console.ReadLine();
