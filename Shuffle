@@ -8,19 +8,19 @@ namespace Shuffle
         {
             bool isWorking = true;
             string userInput;
-            string exite = "exite";
+            string exit = "exit";
 
             int[] arrayShuffle = new int[6];
 
-            RandomazingArray(arrayShuffle);
+            RandomizeArray(arrayShuffle);
 
             while (isWorking == true)
             {
                 ShowArray(arrayShuffle);
-                Console.WriteLine($"\nНажмите Enter  чтобы перемешать массив и введите {exite} чтобы выйти");
+                Console.WriteLine($"\nНажмите Enter  чтобы перемешать массив и введите {exit} чтобы выйти");
                 userInput = Console.ReadLine();
                 
-                if (userInput == exite)
+                if (userInput == exit)
                 {
                     isWorking = false;
                 }
@@ -37,7 +37,7 @@ namespace Shuffle
             Console.WriteLine("До новых встреч");
         }
 
-        static void RandomazingArray(int[] array)
+        static void RandomizeArray(int[] array)
         {
             int arrayMaximum = 20;
             int arrayMinimum = 0;
@@ -57,10 +57,10 @@ namespace Shuffle
 
             for (int i = 0; i < array.Length; i++)
             {
-                int numberEllement = random.Next(array.Length);
+                int numberIndex = random.Next(array.Length);
                 int tempNumber = array[i];
-                array[i] = array[numberEllement];
-                array[numberEllement] = tempNumber;
+                array[i] = array[numberIndex];
+                array[numberIndex] = tempNumber;
             }
         }
 
